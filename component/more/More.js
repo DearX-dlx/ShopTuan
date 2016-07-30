@@ -11,21 +11,44 @@ import {
     Platform,
     Image,
     TouchableOpacity,
+    ScrollView,
 } from 'react-native';
 
 //屏幕的宽高控制
 var Dimensions = require('Dimensions');
 var screenHeight = Dimensions.get('window').height;
 var screenWidth = Dimensions.get('window').width;
+var Item = require('./MoreCell');
 
 var More = React.createClass({
     render() {
         return (
             <View style={styles.container}>
                 {this.renderNavbar()}
-                <Text style={styles.welcome}>
-                    Welcome to More!
-                </Text>
+                <ScrollView>
+                    <View style={{marginTop:10}}>
+                        <Item title="扫一扫" onPress={() => {alert("扫一扫")}} />
+                    </View>
+                    <View style={{marginTop:10}}>
+                        <Item title="省流量模式" isSwitch={true} onPress={() => {alert("扫一扫")}} />
+                        <Item title="消息提醒" />
+                        <Item title="邀请好友" />
+                        <Item title="清空缓存" isCatch={true} />
+                    </View>
+                    <View style={{marginTop:10}}>
+                        <Item title="意见反馈" />
+                        <Item title="问卷调查" />
+                        <Item title="支付帮助" />
+                        <Item title="网络诊断" />
+                        <Item title="关于我们" />
+                        <Item title="人才招募" />
+                        <Item title="问卷调查" />
+                    </View>
+                    <View style={{marginTop:10}}>
+                        <Item title="精品推荐" />
+                        <Item title="给我们打分" />
+                    </View>
+                </ScrollView>
             </View>
         );
     },
@@ -46,7 +69,7 @@ var More = React.createClass({
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#e8e8e8',
     },
     welcome: {
         fontSize: 20,
