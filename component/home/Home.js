@@ -12,6 +12,7 @@ import {
     TextInput,
     Image,
     Platform,
+    ScrollView,
 } from 'react-native';
 
 //屏幕的宽高控制
@@ -20,17 +21,20 @@ var screenHeight = Dimensions.get('window').height;
 var screenWidth = Dimensions.get('window').width;
 //首页详情页面
 var HomeDetail = require('./HomeDetail');
+//菜单栏
+var HomeMenu = require('./HomeMenu');
 
 var Home = React.createClass({
     render() {
         return (
             <View style={styles.container}>
+                {/* 首页的导航栏*/}
                 {this.renderNavbar()}
-                <TouchableOpacity onPress={() => {this.pushToDetail()}}>
-                <Text style={styles.welcome}>
-                    Welcome to Home!
-                </Text>
-                </TouchableOpacity>
+                {/* 首页的菜单栏*/}
+                <ScrollView>
+                    {/*菜单栏目*/}
+                    <HomeMenu/>
+                </ScrollView>
             </View>
         );
     },
