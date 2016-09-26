@@ -13,7 +13,7 @@ import {
     Navigator,
 } from 'react-native';
 
-//导入通用的的Tabbar控件
+//导入通用的的Tabbar控件 -- 来自第三方
 import TabNavigator from 'react-native-tab-navigator';
 //首页
 var Home = require('../home/Home');
@@ -26,12 +26,15 @@ var Shop = require('../shop/Shop');
 
 var Main = React.createClass({
 
+    //初始化状态机的时候使用
     getInitialState(){
+        // 设置默认选中home
         return{
             selectedTab:'home'
         }
     },
 
+    //页面渲染-- 加载一个TabNavigatior
     render() {
         return (
             <TabNavigator>
@@ -51,6 +54,7 @@ var Main = React.createClass({
         );
     },
 
+    // 生产navigation的子目录
     renderTabbartItem(title,iconTabbar,selectIconTabbar,selectedTab,navRouteName,navRouteComponent){
         return(
             <TabNavigator.Item
@@ -77,6 +81,7 @@ var Main = React.createClass({
     },
 });
 
+//样式区
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -98,4 +103,5 @@ const styles = StyleSheet.create({
     },
 });
 
+//设置默认输出什么组件
 module.exports = Main;

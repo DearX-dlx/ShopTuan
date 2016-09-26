@@ -4,6 +4,7 @@
  * @flow
  */
 
+//ES6的写法
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -16,6 +17,7 @@ import {
 var Main = require('./component/main/Main');
 
 var ShopDemo = React.createClass({
+    //用户渲染的方法
       render() {
         return (
             <Main />
@@ -24,5 +26,5 @@ var ShopDemo = React.createClass({
     }
 );
 
-
+//表示运行那个程序
 AppRegistry.registerComponent('ShopDemo', () => ShopDemo);
