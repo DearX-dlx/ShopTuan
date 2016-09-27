@@ -15,6 +15,10 @@ import {
 var Dimensions = require('Dimensions');
 var screenHeight = Dimensions.get('window').height;
 var screenWidth = Dimensions.get('window').width;
+//引入内容组件
+var MenuContentView = require('./HomeMenuContent');
+//引入外部数据
+var MenuContentData = require('../../LocalData/TopMenu.json');
 
 var HomeMenu = React.createClass({
 
@@ -33,6 +37,7 @@ var HomeMenu = React.createClass({
                     horizontal={true}
                     pagingEnabled={true}
                     onMomentumScrollEnd = {this.onScrollAnimationEnd}
+                    showsHorizontalScrollIndicator={false}
                 >
                     {this.renderScrollViewItem()}
                 </ScrollView>
@@ -49,14 +54,15 @@ var HomeMenu = React.createClass({
     renderScrollViewItem(){
         //1.组件数组
         var itemArr = [];
-        //2.颜色数组
-        var colorArr = ['red','green'];
+        //2.颜色数组 - 数据数组
+        var dataArr = MenuContentData.data;
         //3.遍历创建组件
-        for (var i=0;i<colorArr.length;i++){
+        for (var i=0;i<dataArr.length;i++){
             itemArr.push(
-                <View key={i} style={{backgroundColor:colorArr[i],width:screenWidth,height:120}}>
-                    <Text>{i}</Text>
-                </View>
+                <MenuContentView
+                    key = {i}
+                    dataArr = {dataArr[i]}
+                />
             );
         }
         //4.返回组件
@@ -91,7 +97,8 @@ var HomeMenu = React.createClass({
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor:'yellow',
+        backgroundColor:'white',
+        marginBottom:10,
     },
     indicatorStyle:{
         flexDirection:'row',

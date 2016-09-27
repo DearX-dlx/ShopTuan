@@ -23,8 +23,11 @@ var screenWidth = Dimensions.get('window').width;
 var HomeDetail = require('./HomeDetail');
 //菜单栏
 var HomeMenu = require('./HomeMenu');
+//中间的菜单栏
+var HomeMiddleView = require('./HomeMiddleView');
 
 var Home = React.createClass({
+
     render() {
         return (
             <View style={styles.container}>
@@ -34,6 +37,8 @@ var Home = React.createClass({
                 <ScrollView>
                     {/*菜单栏目*/}
                     <HomeMenu/>
+                    {/*中间菜单栏*/}
+                    <HomeMiddleView/>
                 </ScrollView>
             </View>
         );
