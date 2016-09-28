@@ -99,6 +99,8 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor:'white',
         marginBottom:10,
+        borderBottomWidth:0.5,
+        borderBottomColor:'lightgrey',
     },
     indicatorStyle:{
         flexDirection:'row',
