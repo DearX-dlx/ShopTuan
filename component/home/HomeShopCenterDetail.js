@@ -18,6 +18,12 @@ var Data = require('../../LocalData/XMG_Home_D5.json');
 
 var HomeShopCenterDetail = React.createClass({
 
+    getInitialState(){
+        return{
+            jumpViewURL:null,
+        };
+    },
+
     render() {
         return (
             <ScrollView
@@ -34,14 +40,13 @@ var HomeShopCenterDetail = React.createClass({
         var viewArr = [];
         var dataArr = Data.data;
         for (var i = 0;i<dataArr.length;i++){
-            var itemData = dataArr[i];
+            let itemData = dataArr[i];
             viewArr.push(
-                <TouchableOpacity key={i} onPress={() => {alert('0')}}>
+                <TouchableOpacity key={i} onPress={() => {this.clickItem(itemData.detailurl)}}>
                     <View>
                         <Image style={styles.playImgStyle} source={{uri:itemData.img}}>
                             <Text style={styles.addTextStyle}>{itemData.showtext.text}</Text>
                         </Image>
-
                         <Text style={{fontSize:14,marginLeft:10}}>{itemData.name}</Text>
                     </View>
                 </TouchableOpacity>
@@ -50,6 +55,10 @@ var HomeShopCenterDetail = React.createClass({
         return viewArr;
     },
 
+    clickItem(url){
+        //alert(url)
+        this.props.jumpViewURL(url);
+    },
 });
 
 const styles = StyleSheet.create({

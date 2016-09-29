@@ -31,6 +31,10 @@ var HomeBottomMenu = require('./HomeBottomMenu');
 var HomeShopCenter = require('./HomeShopCenter');
 //购物中心详情页面
 var HomeShopCenterDetail = require('./HomeShopCenterDetail');
+//购物中心二级页面
+var ShopDetailWebview = require('./ShopDetailWebview');
+//猜你喜欢
+var GuestYouLike = require('./GuestYouLike');
 
 var Home = React.createClass({
 
@@ -60,11 +64,36 @@ var Home = React.createClass({
                             leftTitle='购物中心'
                             rightTitle='全部四家'
                         />
-                        <HomeShopCenterDetail/>
+                        <HomeShopCenterDetail
+                            jumpViewURL={(jumpUrl) => this.jumpViewWithURL(jumpUrl)}
+                        />
+                    </View>
+                    {/*猜你喜欢*/}
+                    <View>
+                        <GuestYouLike/>
                     </View>
                 </ScrollView>
             </View>
         );
+    },
+
+    jumpViewWithURL(jumpUrl){
+        //alert(jumpUrl);
+        var dear_url = this.dealWithUrl(jumpUrl);
+        this.props.navigator.push({
+            component:ShopDetailWebview,
+            passProps:{dear_url},
+        });
+    },
+
+    // 过滤URL
+    dealWithUrl(url){
+        var serach_url = 'imeituan://';
+        if(url.search(serach_url) !== -1){ // 包含
+            return url.replace('imeituan://www.meituan.com/web/?url=','');
+        }else{// 不包含
+            return url;
+        }
     },
 
     pushToDetail(){
