@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
     leftViewStyle:{
         // backgroundColor: 'yellow',
         width:screenWidth / 2,
+        height:140,
         justifyContent:'center',
         alignItems:'center',
         paddingTop:10,

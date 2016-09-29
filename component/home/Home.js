@@ -25,6 +25,12 @@ var HomeDetail = require('./HomeDetail');
 var HomeMenu = require('./HomeMenu');
 //中间的菜单栏
 var HomeMiddleView = require('./HomeMiddleView');
+//下面的菜单栏目
+var HomeBottomMenu = require('./HomeBottomMenu');
+//购物中心
+var HomeShopCenter = require('./HomeShopCenter');
+//购物中心详情页面
+var HomeShopCenterDetail = require('./HomeShopCenterDetail');
 
 var Home = React.createClass({
 
@@ -36,9 +42,26 @@ var Home = React.createClass({
                 {/* 首页的菜单栏*/}
                 <ScrollView>
                     {/*菜单栏目*/}
-                    <HomeMenu/>
+                    <View>
+                        <HomeMenu/>
+                    </View>
                     {/*中间菜单栏*/}
-                    <HomeMiddleView/>
+                    <View>
+                        <HomeMiddleView/>
+                    </View>
+                    {/*下方的菜单栏*/}
+                    <View>
+                        <HomeBottomMenu/>
+                    </View>
+                    {/*购物中心*/}
+                    <View>
+                        <HomeShopCenter
+                            leftImage='gw'
+                            leftTitle='购物中心'
+                            rightTitle='全部四家'
+                        />
+                        <HomeShopCenterDetail/>
+                    </View>
                 </ScrollView>
             </View>
         );

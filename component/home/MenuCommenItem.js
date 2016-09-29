@@ -21,10 +21,10 @@ var MenuCommentItem = React.createClass({
 
     getDefaultProps(){
         return {
-            title:null,
-            subTitle:null,
-            rightImage:null,
-            titleColor:null,
+            title:'',
+            subTitle:'',
+            rightImage:'',
+            titleColor:'',
         };
     },
 
@@ -36,7 +36,11 @@ var MenuCommentItem = React.createClass({
                         <Text style={{fontSize:16,color:this.props.titleColor,marginBottom:5}}>{this.props.title}</Text>
                         <Text style={{fontSize:12,color:'gray'}}>{this.props.subTitle}</Text>
                     </View>
-                    <Image style={{width:58.5,height:42.5}} source={{url:this.props.rightImage}} />
+                    <Image
+                        style={{width:58.5,height:42.5}}
+                        source={{url:this.props.rightImage}}
+                        resizeMode='contain'
+                    />
                 </View>
             </TouchableOpacity>
         );
@@ -45,7 +49,6 @@ var MenuCommentItem = React.createClass({
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         flexDirection:'row',
         justifyContent: 'space-around',
         alignItems: 'center',
